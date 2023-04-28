@@ -8,6 +8,37 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    let items: [Item] = Item.mocks
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Divider()
+                
+                ScrollView {
+                    LazyVStack {
+                        ForEach(items, id: \.id) { item in
+                            NavigationLink {
+                                Text(item.title)
+                            } label: {
+                                ItemListCell(item: item)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+            }
+            .toolbar {
+                makeLeadingNavigationItem()     // 좌측 내비게이션 아이템
+                makeTrailingNavigationItem()    // 우측 내비게이션 아이템
+            }
+        }
+        .scrollIndicators(.hidden)
+    }
+}
+
+extension HomeView {
     func makeLeadingNavigationItem() -> some ToolbarContent {
         return ToolbarItem(placement: .navigationBarLeading) {
             HStack {
@@ -43,34 +74,6 @@ struct HomeView: View {
                     .frame(width: 20, height: 20)
             }
         }
-    }
-    
-    let items: [Item] = Item.mocks
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                Divider()
-                
-                ScrollView {
-                    LazyVStack {
-                        ForEach(items, id: \.id) { item in
-                            NavigationLink {
-                                Text(item.title)
-                            } label: {
-                                ItemListCell(item: item)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                }
-            }
-            .toolbar {
-                makeLeadingNavigationItem()     // 좌측 내비게이션 아이템
-                makeTrailingNavigationItem()    // 우측 내비게이션 아이템
-            }
-        }
-        .scrollIndicators(.hidden)
     }
 }
 
