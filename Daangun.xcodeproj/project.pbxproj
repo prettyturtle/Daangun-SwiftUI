@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B3201E229FAD1E500CA74C6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3201E129FAD1E500CA74C6 /* Item.swift */; };
+		6B3201E929FC3B2600CA74C6 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 6B3201E829FC3B2600CA74C6 /* URLImage */; };
 		6B7C6C6B29FAB98E0045C230 /* DaangunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C6C6A29FAB98E0045C230 /* DaangunApp.swift */; };
 		6B7C6C6D29FAB98E0045C230 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C6C6C29FAB98E0045C230 /* RootView.swift */; };
 		6B7C6C6F29FAB9920045C230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B7C6C6E29FAB9920045C230 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B3201E929FC3B2600CA74C6 /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +94,9 @@
 			dependencies = (
 			);
 			name = Daangun;
+			packageProductDependencies = (
+				6B3201E829FC3B2600CA74C6 /* URLImage */,
+			);
 			productName = Daangun;
 			productReference = 6B7C6C6729FAB98E0045C230 /* Daangun.app */;
 			productType = "com.apple.product-type.application";
@@ -120,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 6B7C6C5E29FAB98E0045C230;
+			packageReferences = (
+				6B3201E729FC3B2600CA74C6 /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = 6B7C6C6829FAB98E0045C230 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -351,6 +359,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6B3201E729FC3B2600CA74C6 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6B3201E829FC3B2600CA74C6 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B3201E729FC3B2600CA74C6 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6B7C6C5F29FAB98E0045C230 /* Project object */;
 }

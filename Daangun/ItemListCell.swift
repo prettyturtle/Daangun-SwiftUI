@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct ItemListCell: View {
     
@@ -13,18 +14,20 @@ struct ItemListCell: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            AsyncImage(url: URL(string: item.imageURL)) { phase in
-                
-                
-                if let image = phase.image { // 이미지 불러오기 성공
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } else if phase.error != nil { // 이미지 불러오기 실패
-                    Color.red
-                } else { // 이미지 불러오는 도중 UI
-                    ProgressView()
+            URLImage(URL(string: item.imageURL)!) {
+                EmptyView()
+            } inProgress: { progress in
+                ProgressView()
+            } failure: { error, retry in
+                Button {
+                    retry()
+                } label: {
+                    Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
                 }
+            } content: { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             }
             .frame(width: 120, height: 120)
             .clipped() // 프레임 밖 이미지 자르기
